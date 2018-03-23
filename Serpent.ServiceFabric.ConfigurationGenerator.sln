@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2011
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serpent.ServiceFabric.ConfigurationGenerator", "Serpent.ServiceFabric.ConfigurationGenerator\Serpent.ServiceFabric.ConfigurationGenerator.csproj", "{5127D75C-AAED-48A4-BC93-D74300AF23FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5127D75C-AAED-48A4-BC93-D74300AF23FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5127D75C-AAED-48A4-BC93-D74300AF23FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5127D75C-AAED-48A4-BC93-D74300AF23FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5127D75C-AAED-48A4-BC93-D74300AF23FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8C628D4-5B1F-44D9-B3C7-EBC24E74C2D8}
+	EndGlobalSection
+EndGlobal
