@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Erik Bergman</authors>
+    <owners>Erik Bergman</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A tool to generate csharp code from your settings.xml files</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2018</copyright>
+  </metadata>
+  <files>
+	<file src="bin\Release\serpent.servicefabric.configurationgenerator.exe" target="tools/serpent.servicefabric.configurationgenerator.exe" />
+  </files>
+</package>
