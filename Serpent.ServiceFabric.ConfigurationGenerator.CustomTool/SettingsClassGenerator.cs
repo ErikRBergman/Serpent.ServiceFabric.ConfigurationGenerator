@@ -99,19 +99,5 @@ namespace Serpent.ServiceFabric.ConfigurationGenerator.CustomTool
                 return null;
             }
         }
-
-        /// <summary>
-        ///     Receives any errors that occur while validating the documents's schema.
-        /// </summary>
-        /// <param name="sender">Sender object</param>
-        /// <param name="args">Details about the validation error that has occurred</param>
-        private void OnSchemaValidationError(object sender, ValidationEventArgs args)
-        {
-            // signal that validation of document against schema has failed
-            validXML = false;
-
-            // Report the error (so that it is shown in the error list)
-            this.GeneratorError(4, args.Exception.Message, (uint)args.Exception.LineNumber - 1, (uint)args.Exception.LinePosition - 1);
-        }
     }
 }

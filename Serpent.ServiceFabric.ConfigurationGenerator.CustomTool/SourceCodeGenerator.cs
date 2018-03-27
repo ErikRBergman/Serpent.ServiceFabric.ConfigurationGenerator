@@ -9,16 +9,13 @@ PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
 
 ***************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using System.Reflection;
-
-namespace Microsoft.Samples.VisualStudio.GeneratorSample
+namespace Serpent.ServiceFabric.ConfigurationGenerator.CustomTool
 {
+    using System;
+    using System.CodeDom;
+    using System.Collections.Generic;
+    using System.Reflection;
+
     using Serpent.ServiceFabric.ConfigurationGenerator.Logic.Models;
 
     // In order to be compatible with this single file generator, the input file has to
@@ -85,20 +82,35 @@ namespace Microsoft.Samples.VisualStudio.GeneratorSample
             typeDeclaration.EndDirectives.Add(new CodeRegionDirective(
                 CodeRegionMode.End, string.Empty));
 
-            CodeMemberMethod member = new CodeMemberMethod()
-            {
-                Attributes = MemberAttributes.Public | MemberAttributes.Static,
-                Name = "Configuration",
-                ReturnType = new CodeTypeReference("Configuration")
-            };
+            typeDeclaration.Members.Add(CreateExtensionMethod("this StatelessService", "service", ".Context"));
+            typeDeclaration.Members.Add(CreateExtensionMethod("this StatefulService", "service", ".Context"));
 
-            member.Parameters.Add(new CodeParameterDeclarationExpression("this StatelessService", "service"));
-            member.Statements.Add(new CodeSnippetExpression("return new Configuration(service.Context)"));
-            typeDeclaration.Members.Add(member);
+            typeDeclaration.Members.Add(CreateExtensionMethod("this StatefulServiceContext", "service"));
+            typeDeclaration.Members.Add(CreateExtensionMethod("this StatelessServiceContext", "service"));
+
+
+            ////typeDeclaration.Members.Add(CreateExtensionMethod("this Actor", "actor"));
 
             return typeDeclaration;
         }
 
+        private static CodeMemberMethod CreateExtensionMethod(string parameterTypeName, string parameterName, string parameterProperty = null, string conditionCompilationSymbol = null)
+        {
+            CodeMemberMethod member = new CodeMemberMethod()
+                                          {
+                                              Attributes = MemberAttributes.Public | MemberAttributes.Static,
+                                              Name = "Configuration",
+                                              ReturnType = new CodeTypeReference("Configuration")
+                                          };
+
+            member.Parameters.Add(new CodeParameterDeclarationExpression(parameterTypeName, parameterName));
+
+            var parameterPropertyValue = parameterProperty != null ? "." + parameterProperty : string.Empty;
+
+            member.Statements.Add(new CodeSnippetExpression($"return new Configuration({parameterName}{parameterPropertyValue})"));
+
+            return member;
+        }
 
         private static CodeTypeDeclaration CreateConfigurationClass(IEnumerable<Section> sections)
         {
