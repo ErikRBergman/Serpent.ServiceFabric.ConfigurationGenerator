@@ -82,12 +82,11 @@ namespace Serpent.ServiceFabric.ConfigurationGenerator.CustomTool
             typeDeclaration.EndDirectives.Add(new CodeRegionDirective(
                 CodeRegionMode.End, string.Empty));
 
-            typeDeclaration.Members.Add(CreateExtensionMethod("this StatelessService", "service", ".Context"));
-            typeDeclaration.Members.Add(CreateExtensionMethod("this StatefulService", "service", ".Context"));
+            typeDeclaration.Members.Add(CreateExtensionMethod("this StatelessService", "service", "Context"));
+            typeDeclaration.Members.Add(CreateExtensionMethod("this StatefulService", "service", "Context"));
 
             typeDeclaration.Members.Add(CreateExtensionMethod("this StatefulServiceContext", "service"));
             typeDeclaration.Members.Add(CreateExtensionMethod("this StatelessServiceContext", "service"));
-
 
             ////typeDeclaration.Members.Add(CreateExtensionMethod("this Actor", "actor"));
 
